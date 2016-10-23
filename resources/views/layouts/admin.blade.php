@@ -48,9 +48,9 @@
 
 
 <div class="container-fluid">
-      
+
       <div class="row row-offcanvas row-offcanvas-left">
-        
+
          <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav nav-sidebar">
               <li class="active"><a href="#">Overview</a></li>
@@ -59,7 +59,19 @@
               <li><a href="#" target="_ext">Export</a></li>
             </ul>
               <ul class="nav nav-sidebar">
-              <li><a href=""><span class="glyphicon glyphicon-file"></span> Post</a></li>
+
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <span class="glyphicon glyphicon-wrench"></span> Cart  <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Show Cart</a></li>
+                          <li><a href="{{URL('admin/post/create')}}">Create Cart</a></li>
+
+                      </ul>
+                  </li>
+
+
+
               <li><a href=""><span class="glyphicon glyphicon-user"></span> User</a></li>
               <li><a href=""><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
               <li class="dropdown">
@@ -68,11 +80,11 @@
               <ul class="dropdown-menu">
               <li><a href="#">Submenu 1-1</a></li>
               <li><a href="#">Submenu 1-2</a></li>
-              <li><a href="#">Submenu 1-3</a></li> 
+              <li><a href="#">Submenu 1-3</a></li>
               </ul>
               </li>
               </ul>
-        {{-- 
+        {{--
               <ul class="nav nav-sidebar">
               <li><a href="">Another nav item</a></li>
               <li><a href="">More navigation</a></li>
@@ -80,14 +92,14 @@
               <li><a href="">One more nav</a></li>
               <li><a href="">Another nav item</a></li>
             </ul>
-          --}} 
+          --}}
 </div>
 <!--/span-->
 
 
 
         <div class="col-sm-9 col-md-10 main">
-                     
+
           <!--toggle sidebar button-->
           <p class="visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
@@ -120,7 +132,7 @@
               <span class="text-muted">Something else</span>
             </div>
           </div>
-          
+
           <hr>
 
           <h2 class="sub-header">Section title</h2>
@@ -253,7 +265,7 @@
           </div>
 
           <a href="http://www.bootply.com/gkTHCwjLO9">Get the Source Code</a> | <a href="http://bootstrap.theme.cards">More free Bootstrap themes</a>
- --}}          
+ --}}
       </div><!--/row-->
 	</div>
 </div><!--/.container-->
@@ -263,13 +275,13 @@
 <footer>
   <p class="pull-right">©2016 Company</p>
 </footer>
-        
+
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 {{-- 		<script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script> --}}
     <script src="{{asset('js/app.js')}}"></script>
 		<script src="{{asset('js/libs.js')}}"></script>
-	
+
   </body>
 </html>

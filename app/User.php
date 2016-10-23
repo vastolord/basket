@@ -35,4 +35,43 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Order');
     }
+
+    /*public function role()
+    {
+
+        return $this->belongsTo('App\Role');
+    }*/
+    public function category(){
+
+        return $this->belongsTo('App\Category');
+    }
+
+   public function photo()
+    {
+
+        return $this->belongsTo('App\Photo');
+
+    }
+
+
+    public function isAdmin()
+    {
+
+        if ($this->role->name == "admin") {
+
+            return true;
+
+
+        }
+
+        return false;
+
+    }
+
+    public function posts()
+    {
+        return $this->belongsTo('App\Product');
+        //return $this->hasMany('App\Product');
+
+    }
 }

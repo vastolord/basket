@@ -249,9 +249,9 @@
                                     </li>
 
 
-                                    @elseif(Auth::user()->first_name=='mang')
+                                    @elseif(Auth::user()->first_name=='atik')
                                     <li>
-                                    <a href="{{ url('/#') }}">
+                                    <a href="{{ url('admin/post') }}">
                                         <span class="fa fa-tachometer" aria-hidden="true"></span> Dashboard
                                     </a>
                                     </li>

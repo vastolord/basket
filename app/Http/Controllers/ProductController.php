@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Category;
 use App\Order;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,10 +23,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $product=Product::all();
-        return view('wel',compact('product'));
+
+        $category=Category::pluck('name','id')->all();
+        return view('wel',compact('product','category'));
+        Session::put('oldurl',$request->url());
+        //$request->session()->put('oldurl',$request->url());
     }
 
     /**
@@ -71,7 +77,7 @@ class ProductController extends Controller
     public function getCart()
     {
              if(!Session::has('cart')){
-                 return view('cart');
+                 return view('cart.cart');
              }
         $oldcart=Session::get('cart');
         $cart=new Cart($oldcart);
@@ -113,7 +119,14 @@ class ProductController extends Controller
             $order->address=$request->input('address');
             $order->name=$request->input('name');
             $order->payment_id=$charge->id;
+            $order->stock=$cart->totalQty;
             Auth::User()->orders()->save($order);
+
+         /*   $product=Product::find($cart->items->id);
+            $product->stock=$cart->totalQty;
+            $product->update($product);
+
+            */
 
 
 

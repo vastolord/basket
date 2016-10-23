@@ -21,7 +21,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+/*Route::get('/home', 'HomeController@index');*/
 
 Route::get('/admin', function(){
 	return view('admin.index');
@@ -51,21 +51,33 @@ Route::get('/',[
     'uses'=>'ProductController@index',
     'as'=>'checkout.done'
 
+
 ]);
 
 
 Route::get('shop-cart-check',[
     'uses'=>'ProductController@getCart',
-    'as'=>'shop.cart'
+    'as'=>'shop.cart',
+    'middleware'=>'auth'
 
 ]);
 Route::get('checkout',[
     'uses'=>'ProductController@getCheckout',
-    'as'=>'checkout'
+    'as'=>'checkout',
+    'middleware'=>'auth'
 
 ]);
 Route::post('pay',[
     'uses'=>'ProductController@postCheckout',
-    'as'=>'pay'
+    'as'=>'pay',
+    'middleware'=>'auth'
 
 ]);
+Route::group(['middleware'=>'admin'], function(){
+
+
+    //Route::resource('admin/post','AdminPostsController');
+
+});
+//Route::resource('admin/user','AdminUsersController');
+Route::resource('admin/post','AdminPostsController');
